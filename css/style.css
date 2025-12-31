@@ -1,0 +1,490 @@
+
+.card,
+.about-card,
+.skill-card,
+.project-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    transition:
+        transform 0.35s ease,
+        background-color 0.4s ease,
+        box-shadow 0.35s ease;
+}
+
+body.dark-mode section,
+body.dark-mode #home,
+body.dark-mode #about,
+body.dark-mode #project {
+    background-color: #0f172a;
+}
+
+.theme-toggle {
+    transition: transform 0.4s ease;
+}
+
+.theme-toggle.rotate {
+    transform: rotate(180deg) scale(1.1);
+}
+
+section {
+    transition-delay: 0.05s;
+}
+
+.card {
+    transition-delay: 0.1s;
+}
+
+
+section,
+#home,
+#about,
+#project {
+    background-color: #850E35;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+/* =========================
+   RESET DASAR
+   ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+   ========================= */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    padding-top: 80px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+
+body.dark-mode {
+    --bg-home: #0f172a;
+    --bg-main: #0f172a;
+    --text-color: #f8fafc;
+}
+
+
+:root {
+    --bg-home: #850E35;        /* maroon (light mode) */
+    --bg-main: #850E35;
+    --text-color: #ffffff;
+}
+
+#home {
+    background-color: var(--bg-home);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+
+
+/* =========================
+   SECTION GLOBAL
+   ========================= */
+section {
+    padding: 70px 30px;          /* jarak atas-bawah & kanan-kiri */
+}
+
+
+/* Tombol Dark Mode */
+.theme-toggle {
+    background: #4a55a2;        /* BIRU */
+    color: #fff;
+    border: none;
+    border-radius: 8px;         /* kotak rounded */
+    padding: 6px 10px;
+    font-size: 16px;
+    cursor: pointer;
+
+    margin-left: 15px;          /* jarak dari judul */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.theme-toggle:hover {
+    background: #2f3aa8;
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   NAVBAR (AMAN DENGAN BOOTSTRAP)
+   ========================= */
+
+html {
+    scroll-behavior: smooth; /* scroll halus otomatis */
+}
+
+/* ===============================
+   SMOOTH SCROLL
+   =============================== */
+
+html {
+    scroll-behavior: smooth; /* scroll halus otomatis */
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.custom-navbar {
+    background-color: #FFC4C4;   /* warna navbar */
+}
+
+/* teks brand & menu */
+.navbar-brand,
+.nav-link {
+    color: #5A0E24 !important;   /* warna teks navbar */
+    font-weight: bold;
+}
+
+.nav-link.active {
+    background-color: rgba(133, 14, 53, 0.2);
+    border-radius: 8px;
+}
+
+
+/* hover menu navbar */
+.nav-link {
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    background-color: rgba(133, 14, 53, 0.15);
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #850E35;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* =========================
+   HERO / HOME
+   ========================= */
+.hero {
+    text-align: center;
+    color: white;
+    animation: fadeUp 1s ease;
+    min-height: 60vh;              /* Full layar */
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    font-weight: 700; 
+}
+
+.hero-divider {
+    width: 80px;
+    height: 4px;
+    background-color: #FFC4C4;
+    margin: 15px auto;
+    border-radius: 5px;
+    
+}
+
+
+/* foto profil */
+.keisha-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   ABOUT SECTION
+   ========================= */
+.about {
+    margin-bottom: 40px;         /* jarak ke section berikutnya */
+}
+
+/* =========================
+   CARD UMUM (About, Skill, Project)
+   ========================= */
+.card-custom {
+    border: 2px solid #FFC4C4;   /* garis pinggir saja */
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;         /* jarak antar card */
+    background-color: transparent;
+    backdrop-filter: blur(6px); /* efek modern */
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(255, 196, 196, 0.25);
+    border-color: #FFC4C4;
+}
+
+/* judul dalam card */
+.card-custom h2,
+.card-custom h3 {
+    margin-bottom: 12px;
+}
+
+/* =====================
+   TOMBOL KONTAK
+   ===================== */
+.about .btn {
+    border-radius: 25px;     /* biar lebih soft */
+    font-weight: 600;        /* tulisan lebih tegas */
+}
+
+
+/* =========================
+   PROJECT SECTION – DEFAULT (DARK MODE)
+========================= */
+.project-section {
+    background: linear-gradient(180deg, #0f172a, #020617);
+    padding: 100px 0;
+    color: white;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Header */
+.project-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.project-header .line {
+    width: 60px;
+    height: 4px;
+    background: #f9a8d4;
+    margin: 10px 0 20px;
+    display: block;
+}
+
+.project-header p {
+    max-width: 500px;
+    opacity: 0.85;
+}
+
+/* Grid */
+.project-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Card */
+.project-card {
+    border: 2px solid #f9a8d4;
+    border-radius: 22px;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.02);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.project-card h4 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.project-card p {
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+/* Tag */
+.project-tags {
+    margin: 18px 0;
+}
+
+.project-tags span {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-right: 6px;
+}
+
+/* Button */
+.project-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-outline {
+    border: 1.8px solid white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #020617;
+}
+
+.btn-github {
+    background: #4f46e5;
+    padding: 8px 16px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-github:hover {
+    background: #4338ca;
+}
+
+/* =========================
+   LIGHT MODE – MAROON THEME
+========================= */
+body.light-mode .project-section {
+    background: linear-gradient(180deg, #850E35, #5c0b20);
+    color: white;
+}
+
+body.light-mode .project-header .line {
+    background: #ffc2d1;
+}
+
+body.light-mode .project-card {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffc2d1;
+}
+
+body.light-mode .project-tags span {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+body.light-mode .btn-outline {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+body.light-mode .btn-outline:hover {
+    background: #ffffff;
+    color: #5c0b20;
+}
+
+body.light-mode .btn-github {
+    background: #9f1239;
+}
+
+body.light-mode .btn-github:hover {
+    background: #881337;
+}
+
+
+/* =========================
+   MODAL (jika kamu pakai)
+   ========================= */
+.modal-content {
+    border-radius: 15px;         /* modal lebih halus */
+}
+
+/* Cursor default seluruh halaman */
+/* ================================
+   CUSTOM CURSOR STRAWBERRY
+   ================================ */
+
+/* cursor untuk seluruh halaman */
+html, body {
+    cursor: url("/strawberry.png") 0 0, auto !important;
+}
+
+/* cursor saat hover elemen klik */
+a,
+button,
+.clickable {
+    cursor: url("/strawberry.png") 0 0, pointer !important;
+}
+
+
+/* Kotak isi collapse */
+.collapse {
+    background-color: rgba(255, 196, 196, 0.08);
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* List di dalam collapse */
+.collapse ul li {
+    color: #ffffff;
+}
+
+/* Paragraf di collapse */
+.collapse p {
+    color: #ffffff;
+}
+
+/* sembunyikan cursor asli */
+body {
+    cursor: none;
+}
+
+#fake-cursor {
+    width: 32px;
+    height: 32px;
+
+    background-image: url("/strawberry.png"); /* di public */
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+    z-index: 9999;
+}
+

@@ -1,62 +1,11 @@
 
-.card,
-.about-card,
-.skill-card,
-.project-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 18px;
-    transition:
-        transform 0.35s ease,
-        background-color 0.4s ease,
-        box-shadow 0.35s ease;
-}
 
-body.dark-mode section,
-body.dark-mode #home,
-body.dark-mode #about,
-body.dark-mode #project {
-    background-color: #0f172a;
-}
-
-.theme-toggle {
-    transition: transform 0.4s ease;
-}
-
-.theme-toggle.rotate {
-    transform: rotate(180deg) scale(1.1);
-}
-
-section {
-    transition-delay: 0.05s;
-}
-
-.card {
-    transition-delay: 0.1s;
-}
-
-
-section,
-#home,
-#about,
-#project {
-    background-color: #850E35;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-
-/* =========================
-   RESET DASAR
-   ========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* =========================
-   BODY
-   ========================= */
 body {
     font-family: "Poppins", sans-serif;
     background-color: var(--bg-main);
@@ -75,7 +24,7 @@ body.dark-mode {
 
 
 :root {
-    --bg-home: #850E35;        /* maroon (light mode) */
+    --bg-home: #850E35;        
     --bg-main: #850E35;
     --text-color: #ffffff;
 }
@@ -89,11 +38,8 @@ body.dark-mode {
 
 
 
-/* =========================
-   SECTION GLOBAL
-   ========================= */
 section {
-    padding: 70px 30px;          /* jarak atas-bawah & kanan-kiri */
+    padding: 70px 30px;          
 }
 
 
@@ -118,20 +64,8 @@ section {
 }
 
 
-/* =========================
-   NAVBAR (AMAN DENGAN BOOTSTRAP)
-   ========================= */
-
 html {
-    scroll-behavior: smooth; /* scroll halus otomatis */
-}
-
-/* ===============================
-   SMOOTH SCROLL
-   =============================== */
-
-html {
-    scroll-behavior: smooth; /* scroll halus otomatis */
+    scroll-behavior: smooth; 
 }
 
 section {
@@ -139,7 +73,7 @@ section {
 }
 
 .custom-navbar {
-    background-color: #FFC4C4;   /* warna navbar */
+    background-color: #FFC4C4;  
 }
 
 /* teks brand & menu */
@@ -185,11 +119,75 @@ section {
 }
 
 /* =========================
+   NAVBAR TOGGLER (Hamburger Menu) - DARK MODE
+========================= */
+
+/* Default toggler icon (light mode) - tetap gelap */
+body.dark-mode .custom-navbar {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .navbar-brand {
+    color: #FFC4C4 !important; /* pink tetap di brand */
+}
+
+body.dark-mode .nav-link {
+    color: #e2e8f0 !important; /* abu-abu terang */
+}
+
+body.dark-mode .nav-link:hover {
+    background-color: rgba(255, 196, 196, 0.1);
+    color: #FFC4C4 !important;
+}
+
+body.dark-mode .nav-link::after {
+    background: #FFC4C4; /* pink accent */
+}
+
+body.dark-mode .nav-link.active {
+    background-color: rgba(255, 196, 196, 0.15);
+    color: #FFC4C4 !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 196, 196, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(90, 14, 36, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Dark mode toggler - jadi terang */
+body.dark-mode .navbar-toggler {
+    border-color: #003161 !important;
+    background-color: #003161;
+}
+
+body.dark-mode .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 196, 196, 0.3);
+}
+
+body.dark-mode .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 196, 196, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Hover effect */
+.navbar-toggler:hover {
+    transform: scale(1.05);
+    background-color: rgba(90, 14, 36, 0.2);
+}
+
+body.dark-mode .navbar-toggler:hover {
+    background-color: rgba(255, 196, 196, 0.2);
+}
+
+/* =========================
    HERO / HOME
    ========================= */
 .hero {
     text-align: center;
-    color: white;
+    color: #FFC4C4;
     animation: fadeUp 1s ease;
     min-height: 60vh;              /* Full layar */
 }
@@ -212,12 +210,11 @@ section {
 }
 
 .hero-divider {
-    width: 80px;
-    height: 4px;
-    background-color: #FFC4C4;
-    margin: 15px auto;
-    border-radius: 5px;
-    
+    width: 80px;                 /* panjang garis */
+    height: 4px;                 /* ketebalan garis */
+    background-color: #FFC4C4;   /* warna garis */
+    margin: 15px auto;           /* jarak & posisi tengah */
+    border-radius: 5px;          /* ujung garis membulat */
 }
 
 
@@ -227,7 +224,7 @@ section {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid white;
+    border: 4px solid #FFC4C4;
     margin-bottom: 15px;
 }
 
@@ -264,24 +261,9 @@ section {
     margin-bottom: 12px;
 }
 
-/* =====================
-   TOMBOL KONTAK
-   ===================== */
-.about .btn {
-    border-radius: 25px;     /* biar lebih soft */
-    font-weight: 600;        /* tulisan lebih tegas */
-}
-
-
 /* =========================
    PROJECT SECTION – DEFAULT (DARK MODE)
 ========================= */
-.project-section {
-    background: linear-gradient(180deg, #0f172a, #020617);
-    padding: 100px 0;
-    color: white;
-    transition: background 0.5s ease, color 0.5s ease;
-}
 
 /* Header */
 .project-header h2 {
@@ -292,7 +274,7 @@ section {
 .project-header .line {
     width: 60px;
     height: 4px;
-    background: #f9a8d4;
+    background: #FFC4C4;
     margin: 10px 0 20px;
     display: block;
 }
@@ -312,7 +294,9 @@ section {
 
 /* Card */
 .project-card {
-    border: 2px solid #f9a8d4;
+    position: relative;        
+    overflow: hidden; 
+    border: 2px solid #FFC4C4;
     border-radius: 22px;
     padding: 28px;
     background: rgba(255, 255, 255, 0.02);
@@ -326,6 +310,7 @@ section {
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    border-color: #FFC4C4;
 }
 
 .project-card h4 {
@@ -388,18 +373,18 @@ section {
 /* =========================
    LIGHT MODE – MAROON THEME
 ========================= */
-body.light-mode .project-section {
-    background: linear-gradient(180deg, #850E35, #5c0b20);
-    color: white;
-}
 
 body.light-mode .project-header .line {
-    background: #ffc2d1;
+    background: #FFC4C4;
 }
 
 body.light-mode .project-card {
     background: rgba(255, 255, 255, 0.12);
-    border-color: #ffc2d1;
+    border-color: #FFC4C4;
+}
+
+body.light-mode .project-card:hover {
+    border-color: #FFC4C4; /* Pastikan hover juga pink */
 }
 
 body.light-mode .project-tags span {
@@ -425,30 +410,40 @@ body.light-mode .btn-github:hover {
 }
 
 
-/* =========================
-   MODAL (jika kamu pakai)
-   ========================= */
+
 .modal-content {
     border-radius: 15px;         /* modal lebih halus */
 }
 
-/* Cursor default seluruh halaman */
 /* ================================
    CUSTOM CURSOR STRAWBERRY
    ================================ */
 
 /* cursor untuk seluruh halaman */
 html, body {
-    cursor: url("/strawberry.png") 0 0, auto !important;
+    cursor: url("img/strawberry.png") 0 0, auto !important;
 }
 
-/* cursor saat hover elemen klik */
-a,
-button,
-.clickable {
-    cursor: url("/strawberry.png") 0 0, pointer !important;
+/* Hide cursor default */
+body, body * {
+    cursor: none !important;
 }
 
+#fake-cursor {
+    width: 32px;
+    height: 32px;
+
+    background-image: url("img/strawberry.png"); /* di public */
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+    z-index: 9999;
+}
 
 /* Kotak isi collapse */
 .collapse {
@@ -466,25 +461,3 @@ button,
 .collapse p {
     color: #ffffff;
 }
-
-/* sembunyikan cursor asli */
-body {
-    cursor: none;
-}
-
-#fake-cursor {
-    width: 32px;
-    height: 32px;
-
-    background-image: url("/strawberry.png"); /* di public */
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    pointer-events: none;
-    z-index: 9999;
-}
-

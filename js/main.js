@@ -1,10 +1,3 @@
-/* ================================
-   MAIN.JS – PORTFOLIO STATIC
-   ================================ */
-
-/* ================================
-   1. DARK / LIGHT MODE
-   ================================ */
 document.addEventListener("DOMContentLoaded", function () {
 
     const toggleBtn = document.getElementById("themeToggle");

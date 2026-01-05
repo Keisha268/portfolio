@@ -3,446 +3,542 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
+/* ===== VARIABEL WARNA ===== */
+:root {
+    --pink-utama: #EC7FA9;
+    --pink-muda: #FDCEDF;
+    --bg-terang: #fff5f8;
+    --bg-gelap: #1a1a2e;
+    --teks-gelap: #333;
+    --teks-terang: #fff;
+}
+
+/* ===== STYLING BODY ===== */
 body {
-    font-family: "Poppins", sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-color);
-    scroll-behavior: smooth;
-    padding-top: 80px;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    line-height: 1.6; /* Jarak antar baris teks */
+    color: var(--teks-gelap); /* Warna teks */
+    background: var(--bg-terang); /* Warna latar belakang */
+    transition: all 0.3s ease; /* Animasi smooth saat berubah */
 }
-
 
 body.dark-mode {
-    --bg-home: #0f172a;
-    --bg-main: #0f172a;
-    --text-color: #f8fafc;
+    background: var(--bg-gelap);
+    color: var(--teks-terang);
 }
 
-
-:root {
-    --bg-home: #850E35;        
-    --bg-main: #850E35;
-    --text-color: #ffffff;
+/* ===== NAVBAR (Menu Navigasi) ===== */ 
+nav {
+    position: fixed; 
+    top: 0;
+    width: 100%; 
+    background: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    z-index: 1000; 
+    padding: 1rem 0;
+    margin-bottom: 2rem;
 }
 
-#home {
-    background-color: var(--bg-home);
-    color: var(--text-color);
-    min-height: 100vh;
-    transition: background-color 0.4s ease, color 0.4s ease;
+body.dark-mode nav {
+    background: rgba(26, 26, 46, 0.95); 
 }
 
-
-
-section {
-    padding: 70px 30px;          
+/* Container navbar untuk mengatur lebar maksimal */
+.nav-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
 }
 
-
-/* Tombol Dark Mode */
-.theme-toggle {
-    background: #4a55a2;        /* BIRU */
-    color: #fff;
-    border: none;
-    border-radius: 8px;         /* kotak rounded */
-    padding: 6px 10px;
-    font-size: 16px;
-    cursor: pointer;
-
-    margin-left: 15px;          /* jarak dari judul */
-    transition: all 0.3s ease;
-}
-
-/* Hover effect */
-.theme-toggle:hover {
-    background: #2f3aa8;
-    transform: scale(1.05);
-}
-
-
-html {
-    scroll-behavior: smooth; 
-}
-
-section {
-    scroll-margin-top: 90px;
-}
-
-.custom-navbar {
-    background-color: #FFC4C4;  
-}
-
-/* teks brand & menu */
-.navbar-brand,
-.nav-link {
-    color: #5A0E24 !important;   /* warna teks navbar */
+/* Logo di navbar */
+.logo {
+    font-size: 1.5rem;
     font-weight: bold;
+    color: var(--pink-utama);
+    text-decoration: none; 
 }
 
-.nav-link.active {
-    background-color: rgba(133, 14, 53, 0.2);
-    border-radius: 8px;
+/* Menu navigasi */
+.nav-menu {
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+    align-items: center;
 }
 
+/* Link di menu navigasi */
+.nav-menu a {
+    text-decoration: none; 
+    color: inherit; 
+    transition: color 0.3s; 
+    font-weight: 500;
+}
 
-/* hover menu navbar */
-.nav-link {
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+/* Efek hover pada link menu */
+.nav-menu a:hover {
+    color: var(--pink-utama);
+}
+
+/* ===== ACTIVE NAV LINK STYLING ===== */
+.nav-menu a.active {
+    color: var(--pink-utama) !important;
+    font-weight: 600;
     position: relative;
 }
 
-.nav-link:hover {
-    background-color: rgba(133, 14, 53, 0.15);
-    text-decoration: none;
-}
-
-.nav-link::after {
-    content: "";
+/* Garis bawah untuk active link */
+.nav-menu a.active::after {
+    content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #850E35;
-    transition: 0.3s;
-}
-
-.nav-link:hover::after {
-    width: 100%;
+    bottom: -5px;
     left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--pink-utama);
+    border-radius: 2px;
 }
 
-/* =========================
-   NAVBAR TOGGLER (Hamburger Menu) - DARK MODE
-========================= */
-
-/* Default toggler icon (light mode) - tetap gelap */
-body.dark-mode .custom-navbar {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+/* Tombol toggle dark mode */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer; /* Pointer saat di-hover */
+    transition: transform 0.3s;
 }
 
-body.dark-mode .navbar-brand {
-    color: #FFC4C4 !important; /* pink tetap di brand */
+.theme-toggle:hover {
+    transform: rotate(20deg); 
 }
 
-body.dark-mode .nav-link {
-    color: #e2e8f0 !important; /* abu-abu terang */
+/* Tombol hamburger untuk mobile (awalnya tersembunyi) */
+.hamburger {
+    display: none; 
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 5px;
 }
 
-body.dark-mode .nav-link:hover {
-    background-color: rgba(255, 196, 196, 0.1);
-    color: #FFC4C4 !important;
+/* Garis-garis hamburger */
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: currentColor; 
+    border-radius: 2px;
+    transition: 0.3s; 
 }
 
-body.dark-mode .nav-link::after {
-    background: #FFC4C4; /* pink accent */
-}
-
-body.dark-mode .nav-link.active {
-    background-color: rgba(255, 196, 196, 0.15);
-    color: #FFC4C4 !important;
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 196, 196, 0.5);
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(90, 14, 36, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-}
-
-/* Dark mode toggler - jadi terang */
-body.dark-mode .navbar-toggler {
-    border-color: #003161 !important;
-    background-color: #003161;
-}
-
-body.dark-mode .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 196, 196, 0.3);
-}
-
-body.dark-mode .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 196, 196, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-}
-
-/* Hover effect */
-.navbar-toggler:hover {
-    transform: scale(1.05);
-    background-color: rgba(90, 14, 36, 0.2);
-}
-
-body.dark-mode .navbar-toggler:hover {
-    background-color: rgba(255, 196, 196, 0.2);
-}
-
-/* =========================
-   HERO / HOME
-   ========================= */
+/* ===== HERO SECTION (Bagian Utama) ===== */
 .hero {
-    text-align: center;
-    color: #FFC4C4;
-    animation: fadeUp 1s ease;
-    min-height: 60vh;              /* Full layar */
+    min-height: 60vh;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    padding: 6rem 2rem 2rem; 
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Container hero dengan grid layout */
+.hero-container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 3rem; 
+    align-items: center;
+    margin-top: 2rem;
 }
 
-.hero h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
-    font-weight: 700; 
+/* Judul besar di hero */
+.hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    margin-bottom: 1rem;
+    color: var(--pink-utama);
 }
 
-.hero-divider {
-    width: 80px;                 /* panjang garis */
-    height: 4px;                 /* ketebalan garis */
-    background-color: #FFC4C4;   /* warna garis */
-    margin: 15px auto;           /* jarak & posisi tengah */
-    border-radius: 5px;          /* ujung garis membulat */
+/* Sub-judul di hero */
+.hero-content h2 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 2rem;
+    opacity: 0.8; 
 }
 
-
-/* foto profil */
-.keisha-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #FFC4C4;
-    margin-bottom: 15px;
+/* Paragraf di hero */
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
 }
 
-/* =========================
-   ABOUT SECTION
-   ========================= */
+/* Container gambar hero */
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+/* Gambar di hero section */
+.hero-image img {
+    width: 100%; 
+    max-width: 350px; 
+    border-radius: 50%; 
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3); 
+    border: 5px solid var(--pink-utama); 
+}
+
+/* ===== SECTION ABOUT ===== */
 .about {
-    margin-bottom: 40px;         /* jarak ke section berikutnya */
+    padding: 4rem 2rem; 
+    background: white;
 }
 
-/* =========================
-   CARD UMUM (About, Skill, Project)
-   ========================= */
-.card-custom {
-    border: 2px solid #FFC4C4;   /* garis pinggir saja */
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 25px;         /* jarak antar card */
-    background-color: transparent;
-    backdrop-filter: blur(6px); /* efek modern */
-    color: white;
-    transition: all 0.3s ease;
+
+body.dark-mode .about {
+    background: #16213e; 
 }
 
-.card-custom:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(255, 196, 196, 0.25);
-    border-color: #FFC4C4;
+/* Container section dengan max-width */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto; 
 }
 
-/* judul dalam card */
-.card-custom h2,
-.card-custom h3 {
-    margin-bottom: 12px;
+/* Judul section */
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.5rem); 
+    margin-bottom: 3rem;
+    color: var(--pink-utama);
 }
 
-/* =========================
-   PROJECT SECTION – DEFAULT (DARK MODE)
-========================= */
+/* Grid untuk konten about */
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem; 
 
-/* Header */
-.project-header h2 {
-    font-size: 36px;
-    font-weight: 700;
 }
 
-.project-header .line {
-    width: 60px;
-    height: 4px;
-    background: #FFC4C4;
-    margin: 10px 0 20px;
-    display: block;
+
+
+/* ===== CARD (Kotak Konten) ===== */
+.card {
+    background: var(--bg-terang);
+    padding: 2rem;
+    border-radius: 15px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    margin-bottom: 3rem;
 }
 
-.project-header p {
-    max-width: 500px;
-    opacity: 0.85;
+body.dark-mode .card {
+    background: var(--bg-gelap);
 }
 
-/* Grid */
+body.dark-mode .card p {
+    color: #FFFFFE; 
+}
+
+/* Efek saat card di-hover */
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2); 
+}
+
+.card h3 {
+    color: var(--pink-utama);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.card p {
+    line-height: 1.8;
+}
+
+ /* ===== SECTION PROJECT ===== */
+.projects {
+    padding: 4rem 2rem;
+}
+
+/* Grid untuk menampilkan project cards */
 .project-grid {
-    margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    gap: 2rem; 
+    margin-top: 2rem;
 }
 
-/* Card */
+/* Card untuk setiap project */
 .project-card {
-    position: relative;        
-    overflow: hidden; 
-    border: 2px solid #FFC4C4;
-    border-radius: 22px;
-    padding: 28px;
-    background: rgba(255, 255, 255, 0.02);
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background-color 0.4s ease,
-        border-color 0.4s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    border-color: #FFC4C4;
-}
-
-.project-card h4 {
-    font-size: 22px;
-    margin-bottom: 12px;
-}
-
-.project-card p {
-    opacity: 0.85;
-    line-height: 1.6;
-}
-
-/* Tag */
-.project-tags {
-    margin: 18px 0;
-}
-
-.project-tags span {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 5px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    margin-right: 6px;
-}
-
-/* Button */
-.project-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.btn-outline {
-    border: 1.8px solid white;
-    padding: 8px 16px;
-    border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.btn-outline:hover {
     background: white;
-    color: #020617;
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s; 
 }
 
-.btn-github {
-    background: #4f46e5;
-    padding: 8px 16px;
-    border-radius: 10px;
+body.dark-mode .project-card {
+    background: #16213e;
+}
+
+/* Efek hover: card naik dan bayangan lebih besar */
+.project-card:hover {
+    transform: translateY(-10px); /* Naik 10px */
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.3);
+}
+
+/* Header project dengan gradient background */
+.project-header {
+    background: linear-gradient(135deg, var(--pink-utama), var(--pink-muda));
+    padding: 2rem;
+    text-align: center;
     color: white;
+}
+
+.project-header h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Body/isi project card */
+.project-body {
+    padding: 1.5rem;
+}
+
+/* Container untuk tag teknologi */
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap; 
+    margin: 1rem 0;
+}
+
+/* Style untuk setiap tag */
+.tag {
+    background: var(--pink-muda);
+    color: var(--teks-gelap);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px; 
+    font-size: 0.9rem;
+}
+
+/* Container untuk tombol project */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Style dasar untuk tombol */
+.btn {
+    flex: 1; 
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
     text-decoration: none;
-    transition: background 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    display: inline-block; 
 }
 
-.btn-github:hover {
-    background: #4338ca;
+/* Tombol utama (primary) dengan background pink */
+.btn-primary {
+    background: var(--pink-utama);
+    color: white;
 }
 
-/* =========================
-   LIGHT MODE – MAROON THEME
-========================= */
-
-body.light-mode .project-header .line {
-    background: #FFC4C4;
+/* Tombol secondary dengan border saja */
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--pink-utama);
+    color: var(--pink-utama);
 }
 
-body.light-mode .project-card {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: #FFC4C4;
+body.dark-mode .btn-secondary {
+    color: var(--pink-muda);
+    border-color: var(--pink-muda);
 }
 
-body.light-mode .project-card:hover {
-    border-color: #FFC4C4; /* Pastikan hover juga pink */
+/* Efek hover pada tombol: naik sedikit dan bayangan */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
 }
 
-body.light-mode .project-tags span {
-    background: rgba(255, 255, 255, 0.25);
+/* ===== SECTION KONTAK ===== */
+.contact {
+    padding: 4rem 2rem;
+    background: white; /* Untuk light mode */
 }
 
-body.light-mode .btn-outline {
-    border-color: #ffffff;
-    color: #ffffff;
+/* Container info kontak */
+.contact-info {
+    display: flex;
+    flex-direction: column; 
+    gap: 1rem;
+    align-items: center;
 }
 
-body.light-mode .btn-outline:hover {
-    background: #ffffff;
-    color: #5c0b20;
+body.dark-mode .contact {
+    background: #16213e; 
 }
 
-body.light-mode .btn-github {
-    background: #9f1239;
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
 }
 
-body.light-mode .btn-github:hover {
-    background: #881337;
+.contact-item span {
+    font-size: 1.5rem; 
 }
 
-
-
-.modal-content {
-    border-radius: 15px;         /* modal lebih halus */
+.contact-item a {
+    color: var(--pink-utama);
+    text-decoration: none;
+    transition: opacity 0.3s;
 }
 
-/* ================================
-   CUSTOM CURSOR STRAWBERRY
-   ================================ */
-
-/* cursor untuk seluruh halaman */
-html, body {
-    cursor: url("img/strawberry.png") 0 0, auto !important;
+.contact-item a:hover {
+    opacity: 0.7; 
 }
 
-/* Hide cursor default */
-body, body * {
-    cursor: none !important;
+#Home, #About, #Project, #Contact {
+    scroll-margin-top: 80px;
 }
 
-#fake-cursor {
-    width: 32px;
-    height: 32px;
+/* ===== FOOTER ===== */
+footer {
+    background: var(--pink-utama);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
 
-    background-image: url("img/strawberry.png"); /* di public */
-    background-size: contain;
-    background-repeat: no-repeat;
+/* ===== RESPONSIVE DESIGN ===== */
+        
+/* TABLET & MOBILE (layar < 968px) */
+@media (max-width: 968px) {
+    /* Hero jadi 1 kolom */
+    .hero-container {
+        grid-template-columns: 1fr; /* 1 kolom saja */
+        text-align: center;
+    }
 
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* Gambar pindah ke atas */
+    .hero-image {
+        order: -1; /* order negatif = pindah ke atas */
+    }
 
-    pointer-events: none;
-    z-index: 9999;
+    /* Menu navigasi jadi slide dari kiri */
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Tersembunyi di kiri */
+        top: 70px;
+        flex-direction: column; /* Vertikal */
+        background: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 2rem 0;
+    }
+
+    body.dark-mode .nav-menu {
+    background: rgba(26, 26, 46, 0.98);
+    }
+
+    /* Menu tampil saat class active ditambahkan */
+    .nav-menu.active {
+        left: 0; /* Slide masuk */
+    }
+
+    /* Tampilkan hamburger di mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Animasi hamburger jadi X saat active */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0; /* Garis tengah hilang */
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
+/* MOBILE KECIL (layar < 600px) */
+@media (max-width: 600px) {
+    /* Padding lebih kecil */
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 5rem 1rem 2rem;
+    }
+
+    .about, .contact {
+        padding: 3rem 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    /* Grid about jadi 1 kolom */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .project-grid {
+        grid-template-columns:1fr;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%; /* Lebar penuh */
+    }
+}
+
+/* TABLET MEDIUM (601px - 968px) */
+@media (min-width: 601px) and (max-width: 968px) {
+    /* Grid about tetap 2 kolom di tablet */
+    .about-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+    
+
+/* DESKTOP BESAR (> 1400px) */
+@media (min-width: 1400px) {
+    /* Container lebih lebar untuk layar besar */
+    .section-container,
+    .hero-container {
+        max-width: 1400px;
+    }
 }
 
 /* Kotak isi collapse */
@@ -461,3 +557,38 @@ body, body * {
 .collapse p {
     color: #ffffff;
 }
+
+
+.modal-content {
+    border-radius: 15px;        
+}
+
+/* ================================
+   CUSTOM CURSOR STRAWBERRY
+   ================================ */
+html, body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍓</text></svg>") 16 0, auto;
+}
+
+/* Hide cursor default */
+/*body, body * {
+    cursor: none !important;
+}*/
+
+/*#fake-cursor {
+    width: 32px;
+    height: 32px;
+
+    background-image: url("img/strawberry.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+    z-index: 9999;
+}*/
+
+

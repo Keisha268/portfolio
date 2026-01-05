@@ -20,175 +20,140 @@
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg fixed-top shadow-sm custom-navbar">
-    <div class="container">
-
-        <!-- KIRI: Judul + Dark Mode -->
-        <div class="d-flex align-items-center gap-2">
-            <a class="navbar-brand fw-bold mb-0" href="#">My Portfolio</a>
-
-            <!-- Dark Mode Button -->
-            <button id="themeToggle" class="theme-toggle">
-                🌙
-            </button>
-        </div>
-
-        <!-- Toggle menu mobile -->
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Menu -->
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#Home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#About">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Project">Project</a>
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">My Portfolio</a>
+        <ul class="nav-menu">
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Project">Project</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
                 </li>
             </ul>
-        </div>
-
+            <!-- Tombol hamburger untuk mobile -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
     </div>
 </nav>
 
-
 <!-- ================= HOME ================= -->
-<section id="Home" class="hero text-center">
-    <img src="img/keisha.jpg" class="keisha-img" alt="Keisha">
-    <h1>Keisha Nazwa Effendi</h1>
-    <p>Mahasiswa Informatika</p>
-    <div class="hero-divider"></div>
+<section class="hero" id="Home">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Keisha Nazwa Effendi</h1>
+            <h2>Mahasiswa Informatika</h2>
+            <p>Halo! Saya mahasiswa Teknik Informatika yang sedang belajar tentang dunia pemrograman dan teknologi. Saya tertarik untuk terus berkembang dan belajar hal-hal baru setiap harinya. 🚀</p>
+        </div>
+            <div class="hero-image">
+                <img src="img/keishanazwa.jpeg" alt="Keisha">
+            </div>
+    </div>
 </section>
 
 <!-- ================= ABOUT ================= -->
-<section id="About" class="about">
-    <div class="container">
-        <div class="row g-4">
-
-            <div class="col-md-6">
-                <div class="card-custom">
-                    <h3>Tentang Saya</h3>
-                    <p>
-                        Saya mahasiswa Teknik Informatika yang tertarik pada
-                        pengembangan web dan UI/UX.
-                    </p>
+<section class="about" id="About">
+        <div class="section-container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="card">
+                    <h3>💫 Siapa Saya?</h3>
+                    <p>Saya mahasiswa Teknik Informatika yang baru memulai perjalanan di dunia teknologi. Meskipun masih pemula, saya memiliki semangat yang besar untuk belajar dan berkembang. Setiap hari adalah kesempatan baru untuk belajar sesuatu!</p>
+                </div>
+                
+                <div class="card">
+                    <h3>🎯 Apa yang Sedang Saya Pelajari?</h3>
+                    <p>Saat ini saya sedang fokus mempelajari dasar-dasar pemrograman web seperti HTML, CSS, dan JavaScript. Saya juga mulai belajar tentang konsep pemrograman, algoritma, dan struktur data. Step by step, saya yakin bisa menguasainya!</p>
+                </div>
+                
+                <div class="card">
+                    <h3>🌟 Minat & Hobi</h3>
+                    <p>Saya tertarik dengan pengembangan web dan UI/UX design. Di waktu luang, saya suka eksplorasi website-website keren, belajar dari tutorial online, dan mencoba membuat project sederhana untuk praktik.</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card-custom clickable"
-                     data-bs-toggle="collapse"
-                     data-bs-target="#keahlian">
-                    <h3>Keahlian</h3>
-                    <p class="small-text">Klik untuk lihat skill</p>
-                </div>
-
-                <!-- Konten tersembunyi -->
-                <div id="keahlian" class="collapse mt-3">
-                    <ul>
-                        <li>....</li>
-                        <li>....</li>
-                    </ul>
-                </div>
-            </div>
-
-
-            <div class="col-md-6">
-                <div class="card-custom clickable"
-                     data-bs-toggle="collapse"
-                     data-bs-target="#pengalaman">
-
-                    <h3>Pengalaman</h3>
-                    <p class="small-text">Klik untuk lihat pengalaman</p>
-                </div>
-
-                <div id="pengalaman" class="collapse mt-3">
-                    <p>
-                        ......
-                    </p>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- ================= PROJECT ================= -->
-<section id="Project" class="projects">
-    <div class="container">
-
-        <!-- Judul -->
-        <div class="project-header">
-            <h2>Project Saya</h2>
-            <span class="line"></span>
-            <p>Beberapa hasil karya dan project yang pernah saya buat</p>
-        </div>
-
-        <!-- Grid Project -->
+<section class="projects" id="Project">
+    <div class="section-container">
+        <h2 class="section-title">Project Saya</h2>
+        <p class="section-subtitle">Beberapa project yang sedang dan akan saya kerjakan 🚀</p>
         <div class="project-grid">
-
-            <!-- Project Card -->
+            
+            <!-- PROJECT 1 -->
             <div class="project-card">
-                <h4>📁 Project 1</h4>
-                <p>
-                    Deskripsi project pertama yang menjelaskan fitur utama
-                    dari project ini.
-                </p>
-
-                <!-- Badge -->
-                <div class="project-tags">
-                    <span>CI4</span>
-                    <span>Bootstrap</span>
+                <div class="project-header">
+                    <h4>📁 Project Akan Datang</h4>
                 </div>
-
-                <!-- Tombol -->
-                <div class="project-actions">
-                    <a href="#" class="btn-outline">Lihat Detail</a>
-                    <a href="https://github.com/username/project1"
-                       target="_blank"
-                       class="btn-github">
-                        GitHub
-                    </a>
+                <div class="project-body">
+                    <p>Stay tuned! Sedang belajar buat sesuatu yang menarik 🎨</p>
+                    <div class="project-tags">
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary" style="opacity: 0.6;">Segera Hadir</a>
+                        <a href="https://github.com/Keisha268" class="btn btn-secondary">GitHub</a>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Project Card -->
+            </div> <!-- Penutup project-card pertama -->
+            
+            <!-- PROJECT 2 -->
             <div class="project-card">
-                <h4>📁 Project 2</h4>
-                <p>
-                    Deskripsi singkat project kedua yang saya kerjakan.
-                </p>
-
-                <div class="project-tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
+                <div class="project-header">
+                    <h4>📁 Project Masa Depan</h4>
                 </div>
-
-                <div class="project-actions">
-                    <a href="#" class="btn-outline">Lihat Detail</a>
-                    <a href="https://github.com/username/project2"
-                       target="_blank"
-                       class="btn-github">
-                        GitHub
-                    </a>
+                <div class="project-body">
+                    <p>Ruang untuk project selanjutnya. Excited untuk terus belajar dan bikin project baru! 💡</p>
+                    <div class="project-tags">
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary" style="opacity: 0.6;">Segera Hadir</a>
+                        <a href="https://github.com/Keisha268" class="btn btn-secondary">GitHub</a>
+                    </div>
                 </div>
+            </div> <!-- Penutup project-card kedua -->
+            
+        </div> <!-- Penutup project-grid -->
+    </div> <!-- Penutup section-container -->
+</section>
+
+<!--=================CONTACT=================-->
+<section class="contact" id="Contact">
+    <div class="section-container">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">
+            Saya terbuka untuk berdiskusi, berkolaborasi, atau sekadar ngobrol tentang teknologi! 😊
+        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <a href="mailto:keishanazwaeffendi@email.com">Email</a>
             </div>
-
-        </div>
+            <div class="contact-item">
+                <span>🐙</span>
+                <a href="https://github.com/Keisha268" target="_blank">GitHub</a>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <a href="https://instagram.com/_keishanazwa" target="_blank">Instagram</a>
+            </div>
+            </div>
     </div>
 </section>
 
-<img id="fake-cursor" src="img/strawberry.png" alt="cursor">
 
 
 <!-- ================= FOOTER ================= -->
 <footer class="text-center py-4 text-light">
     <p>Terima kasih sudah berkunjung 🤍</p>
     <small>© 2025 Keisha Nazwa Effendi</small>
+    <p>Dibuat dengan ❤️ sambil belajar coding</p>
 </footer>
 
 <!-- JS -->

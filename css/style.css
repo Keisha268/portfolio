@@ -1,9 +1,7 @@
-
-
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 /* ===== VARIABEL WARNA ===== */
@@ -16,13 +14,20 @@
     --teks-terang: #fff;
 }
 
-/* ===== STYLING BODY ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== BASE STYLING (MOBILE FIRST) ===== */
+/* Ini adalah default styling untuk MOBILE (< 600px) */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    line-height: 1.6; /* Jarak antar baris teks */
-    color: var(--teks-gelap); /* Warna teks */
-    background: var(--bg-terang); /* Warna latar belakang */
-    transition: all 0.3s ease; /* Animasi smooth saat berubah */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--teks-gelap);
+    background: var(--bg-terang);
+    transition: all 0.3s ease;
+    font-size: 16px; /* Base font size untuk mobile */
 }
 
 body.dark-mode {
@@ -30,70 +35,92 @@ body.dark-mode {
     color: var(--teks-terang);
 }
 
-/* ===== NAVBAR (Menu Navigasi) ===== */ 
+/* ===== NAVBAR (MOBILE) ===== */
 nav {
-    position: fixed; 
+    position: fixed;
     top: 0;
-    width: 100%; 
-    background: rgba(255, 255, 255, 0.95); 
-    backdrop-filter: blur(10px); 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-    z-index: 1000; 
-    padding: 1rem 0;
-    margin-bottom: 2rem;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 0.8rem 0; /* Padding lebih kecil untuk mobile */
 }
 
 body.dark-mode nav {
-    background: rgba(26, 26, 46, 0.95); 
+    background: rgba(26, 26, 46, 0.95);
 }
 
-/* Container navbar untuk mengatur lebar maksimal */
 .nav-container {
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 2rem; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-/* Logo di navbar */
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--pink-utama);
-    text-decoration: none; 
-}
-
-/* Menu navigasi */
-.nav-menu {
-    display: flex; 
-    list-style: none; 
-    gap: 2rem; 
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem; /* Padding kiri-kanan kecil untuk mobile */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-/* Link di menu navigasi */
-.nav-menu a {
-    text-decoration: none; 
-    color: inherit; 
-    transition: color 0.3s; 
-    font-weight: 500;
+.logo {
+    font-size: 1.3rem; /* Logo lebih kecil di mobile */
+    font-weight: bold;
+    color: var(--pink-utama);
+    text-decoration: none;
 }
 
-/* Efek hover pada link menu */
+/* Menu navigasi - Hidden di mobile, muncul saat hamburger diklik */
+.nav-menu {
+    position: fixed;
+    left: -100%; /* Tersembunyi di kiri */
+    top: 60px; /* Di bawah navbar */
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.98);
+    width: 100%;
+    text-align: center;
+    transition: left 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1.5rem 0;
+    list-style: none;
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+body.dark-mode .nav-menu {
+    background: rgba(26, 26, 46, 0.98);
+}
+
+/* Menu tampil saat active */
+.nav-menu.active {
+    left: 0;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
 .nav-menu a:hover {
     color: var(--pink-utama);
 }
 
-/* ===== ACTIVE NAV LINK STYLING ===== */
+/* ===== ACTIVE NAV LINK ===== */
 .nav-menu a.active {
     color: var(--pink-utama) !important;
     font-weight: 600;
     position: relative;
 }
 
-/* Garis bawah untuk active link */
+/* Optional: Tambahkan garis bawah untuk active link */
 .nav-menu a.active::after {
     content: '';
     position: absolute;
@@ -105,135 +132,145 @@ body.dark-mode nav {
     border-radius: 2px;
 }
 
-/* Tombol toggle dark mode */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Sesuaikan dengan tinggi navbar */
+}
+
+/* Theme toggle button */
 .theme-toggle {
     background: none;
     border: none;
     font-size: 1.5rem;
-    cursor: pointer; /* Pointer saat di-hover */
+    cursor: pointer;
     transition: transform 0.3s;
+    padding: 0.3rem;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
 }
 
 .theme-toggle:hover {
-    transform: rotate(20deg); 
+    transform: rotate(20deg);
 }
 
-/* Tombol hamburger untuk mobile (awalnya tersembunyi) */
+/* Hamburger menu - Visible di mobile */
 .hamburger {
-    display: none; 
+    display: flex;
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
     padding: 5px;
 }
 
-/* Garis-garis hamburger */
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: currentColor; 
+    background: currentColor;
     border-radius: 2px;
-    transition: 0.3s; 
+    transition: 0.3s;
 }
 
-/* ===== HERO SECTION (Bagian Utama) ===== */
+/* Animasi hamburger jadi X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ===== HERO SECTION (MOBILE) ===== */
 .hero {
-    min-height: 60vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    padding: 6rem 2rem 2rem; 
-}
-
-/* Container hero dengan grid layout */
-.hero-container {
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 3rem; 
     align-items: center;
-    margin-top: 2rem;
+    justify-content: center;
+    padding: 5rem 1rem 2rem; /* Top padding untuk navbar fixed */
 }
 
-/* Judul besar di hero */
+.hero-container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack vertikal di mobile */
+    gap: 2rem;
+    text-align: center; /* Center text di mobile */
+}
+
 .hero-content h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem); 
-    margin-bottom: 1rem;
+    font-size: 2rem; /* Lebih kecil di mobile */
+    margin-bottom: 0.8rem;
     color: var(--pink-utama);
+    line-height: 1.2;
 }
 
-/* Sub-judul di hero */
 .hero-content h2 {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    margin-bottom: 2rem;
-    opacity: 0.8; 
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
 }
 
-/* Paragraf di hero */
 .hero-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
 
-/* Container gambar hero */
+/* Gambar hero */
 .hero-image {
     display: flex;
     justify-content: center;
+    order: -1; /* Gambar di atas text di mobile */
 }
 
-/* Gambar di hero section */
 .hero-image img {
-    width: 100%; 
-    max-width: 350px; 
-    border-radius: 50%; 
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3); 
-    border: 5px solid var(--pink-utama); 
+    width: 100%;
+    max-width: 250px; /* Lebih kecil di mobile */
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    border: 4px solid var(--pink-utama);
 }
 
-/* ===== SECTION ABOUT ===== */
+/* ===== SECTION ABOUT (MOBILE) ===== */
 .about {
-    padding: 4rem 2rem; 
+    padding: 3rem 1rem; /* Padding kecil untuk mobile */
     background: white;
 }
 
-
 body.dark-mode .about {
-    background: #16213e; 
+    background: #16213e;
 }
 
-/* Container section dengan max-width */
 .section-container {
-    max-width: 1200px;
-    margin: 0 auto; 
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-/* Judul section */
 .section-title {
     text-align: center;
-    font-size: clamp(2rem, 4vw, 2.5rem); 
-    margin-bottom: 3rem;
+    font-size: 1.8rem; /* Lebih kecil di mobile */
+    margin-bottom: 2rem;
     color: var(--pink-utama);
 }
 
-/* Grid untuk konten about */
+/* Grid about - 1 kolom di mobile */
 .about-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 2rem; 
-
+    grid-template-columns: 1fr; /* 1 kolom saja */
+    gap: 1.5rem;
 }
 
-
-
-/* ===== CARD (Kotak Konten) ===== */
+/* ===== CARD (MOBILE) ===== */
 .card {
     background: var(--bg-terang);
-    padding: 2rem;
-    border-radius: 15px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-    transition: transform 0.3s, box-shadow 0.3s; 
-    margin-bottom: 3rem;
+    padding: 1.5rem; /* Padding kecil untuk mobile */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 body.dark-mode .card {
@@ -241,103 +278,104 @@ body.dark-mode .card {
 }
 
 body.dark-mode .card p {
-    color: #FFFFFE; 
+    color: #FFFFFE;
 }
 
-/* Efek saat card di-hover */
 .card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2); 
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
 }
 
 .card h3 {
     color: var(--pink-utama);
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .card p {
-    line-height: 1.8;
+    line-height: 1.7;
+    font-size: 0.95rem;
 }
 
- /* ===== SECTION PROJECT ===== */
+/* ===== PROJECT SECTION (MOBILE) ===== */
 .projects {
-    padding: 4rem 2rem;
+    padding: 3rem 1rem;
 }
 
-/* Grid untuk menampilkan project cards */
+/* Grid project - 1 kolom di mobile */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem; 
+    grid-template-columns: 1fr; /* 1 kolom saja */
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-/* Card untuk setiap project */
 .project-card {
     background: white;
-    border-radius: 15px; 
-    overflow: hidden; 
+    border-radius: 15px;
+    overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-    transition: transform 0.3s, box-shadow 0.3s; 
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 body.dark-mode .project-card {
     background: #16213e;
 }
 
-/* Efek hover: card naik dan bayangan lebih besar */
 .project-card:hover {
-    transform: translateY(-10px); /* Naik 10px */
+    transform: translateY(-10px);
     box-shadow: 0 12px 30px rgba(255, 105, 180, 0.3);
 }
 
-/* Header project dengan gradient background */
 .project-header {
     background: linear-gradient(135deg, var(--pink-utama), var(--pink-muda));
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     color: white;
 }
 
 .project-header h4 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
 }
 
-/* Body/isi project card */
 .project-body {
     padding: 1.5rem;
 }
 
-/* Container untuk tag teknologi */
+body.dark-mode .project-body p {
+    color: #FFFFFE;
+}
+
+.project-body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
 .project-tags {
     display: flex;
     gap: 0.5rem;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     margin: 1rem 0;
 }
 
-/* Style untuk setiap tag */
 .tag {
     background: var(--pink-muda);
     color: var(--teks-gelap);
     padding: 0.3rem 0.8rem;
-    border-radius: 20px; 
-    font-size: 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
 }
 
-/* Container untuk tombol project */
+/* Tombol project - Stack vertikal di mobile */
 .project-links {
     display: flex;
-    gap: 1rem;
+    flex-direction: column; /* Vertikal di mobile */
+    gap: 0.8rem;
     margin-top: 1.5rem;
 }
 
-/* Style dasar untuk tombol */
 .btn {
-    flex: 1; 
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 8px;
@@ -346,16 +384,15 @@ body.dark-mode .project-card {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     font-weight: 600;
-    display: inline-block; 
+    display: block;
+    width: 100%; /* Full width di mobile */
 }
 
-/* Tombol utama (primary) dengan background pink */
 .btn-primary {
     background: var(--pink-utama);
     color: white;
 }
 
-/* Tombol secondary dengan border saja */
 .btn-secondary {
     background: transparent;
     border: 2px solid var(--pink-utama);
@@ -367,228 +404,272 @@ body.dark-mode .btn-secondary {
     border-color: var(--pink-muda);
 }
 
-/* Efek hover pada tombol: naik sedikit dan bayangan */
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
 }
 
-/* ===== SECTION KONTAK ===== */
+/* ===== CONTACT SECTION (MOBILE) ===== */
 .contact {
-    padding: 4rem 2rem;
-    background: white; /* Untuk light mode */
-}
-
-/* Container info kontak */
-.contact-info {
-    display: flex;
-    flex-direction: column; 
-    gap: 1rem;
-    align-items: center;
+    padding: 3rem 1rem;
 }
 
 body.dark-mode .contact {
     background: #16213e; 
 }
 
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
 .contact-item {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    padding: 1rem;
+    background: var(--bg-terang);
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+body.dark-mode .contact-item {
+    background: var(--bg-gelap);
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
 }
 
 .contact-item span {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
 .contact-item a {
     color: var(--pink-utama);
     text-decoration: none;
+    font-weight: 600;
     transition: opacity 0.3s;
 }
 
+body.dark-mode .contact-item a {
+    color: var(--pink-muda);
+}
+
 .contact-item a:hover {
-    opacity: 0.7; 
+    opacity: 0.7;
 }
 
-#Home, #About, #Project, #Contact {
-    scroll-margin-top: 80px;
-}
-
-/* ===== FOOTER ===== */
+/* ===== FOOTER (MOBILE) ===== */
 footer {
     background: var(--pink-utama);
     color: white;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-        
-/* TABLET & MOBILE (layar < 968px) */
-@media (max-width: 968px) {
-    /* Hero jadi 1 kolom */
-    .hero-container {
-        grid-template-columns: 1fr; /* 1 kolom saja */
-        text-align: center;
-    }
-
-    /* Gambar pindah ke atas */
-    .hero-image {
-        order: -1; /* order negatif = pindah ke atas */
-    }
-
-    /* Menu navigasi jadi slide dari kiri */
-    .nav-menu {
-        position: fixed;
-        left: -100%; /* Tersembunyi di kiri */
-        top: 70px;
-        flex-direction: column; /* Vertikal */
-        background: rgba(255, 255, 255, 0.98);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding: 2rem 0;
-    }
-
-    body.dark-mode .nav-menu {
-    background: rgba(26, 26, 46, 0.98);
-    }
-
-    /* Menu tampil saat class active ditambahkan */
-    .nav-menu.active {
-        left: 0; /* Slide masuk */
-    }
-
-    /* Tampilkan hamburger di mobile */
-    .hamburger {
-        display: flex;
-    }
-
-    /* Animasi hamburger jadi X saat active */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0; /* Garis tengah hilang */
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
+footer p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
 }
 
-/* MOBILE KECIL (layar < 600px) */
-@media (max-width: 600px) {
-    /* Padding lebih kecil */
+/* ================================================
+   TABLET (min-width: 600px)
+   Mulai scale up untuk layar lebih besar
+   ================================================ */
+
+@media (min-width: 600px) {
+    /* Navbar */
     .nav-container {
-        padding: 0 1rem;
+        padding: 0 2rem;
     }
 
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    /* Hero */
     .hero {
-        padding: 5rem 1rem 2rem;
+        padding: 6rem 2rem 3rem;
     }
 
-    .about, .contact {
-        padding: 3rem 1rem;
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-image img {
+        max-width: 300px;
+    }
+
+    /* About - 2 kolom di tablet */
+    .about-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
 
     .card {
-        padding: 1.5rem;
+        padding: 2rem;
     }
 
-    /* Grid about jadi 1 kolom */
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-
+    /* Project - 2 kolom di tablet */
     .project-grid {
-        grid-template-columns:1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
 
+    /* Contact - 2 kolom */
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Sections */
+    .about, .projects, .contact {
+        padding: 4rem 2rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* ================================================
+   DESKTOP (min-width: 968px)
+   Navbar horizontal, hero 2 kolom
+   ================================================ */
+
+@media (min-width: 968px) {
+    /* Navbar - Menu horizontal */
+    .nav-menu {
+        position: static; /* Tidak fixed lagi */
+        flex-direction: row; /* Horizontal */
+        width: auto;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 2rem;
+        display: flex; /* Selalu tampil */
+    }
+
+    body.dark-mode .nav-menu {
+        background: transparent;
+    }
+
+    .nav-menu li {
+        margin: 0;
+    }
+
+    .nav-menu a {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    /* Hamburger hidden di desktop */
+    .hamburger {
+        display: none;
+    }
+
+    /* Hero - 2 kolom side by side */
+    .hero-container {
+        flex-direction: row; /* Horizontal */
+        text-align: left; /* Align left */
+        gap: 4rem;
+        max-width: 1200px;
+        align-items: center;
+    }
+
+    .hero-image {
+        order: 1; /* Gambar di kanan */
+    }
+
+    .hero-image img {
+        max-width: 350px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    /* About - 3 kolom di desktop */
+    .about-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Project - 3 kolom di desktop */
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+
+    /* Project buttons - Horizontal lagi */
     .project-links {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .btn {
-        width: 100%; /* Lebar penuh */
+        width: auto;
+        flex: 1;
+    }
+
+    /* Contact - 3 atau 4 kolom */
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Container max-width */
+    .section-container {
+        max-width: 1200px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
     }
 }
 
-/* TABLET MEDIUM (601px - 968px) */
-@media (min-width: 601px) and (max-width: 968px) {
-    /* Grid about tetap 2 kolom di tablet */
-    .about-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* ================================================
+   LARGE DESKTOP (min-width: 1400px)
+   Max width lebih besar untuk layar ultra wide
+   ================================================ */
 
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-    
-
-/* DESKTOP BESAR (> 1400px) */
 @media (min-width: 1400px) {
-    /* Container lebih lebar untuk layar besar */
     .section-container,
     .hero-container {
         max-width: 1400px;
     }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
 }
 
-/* Kotak isi collapse */
-.collapse {
-    background-color: rgba(255, 196, 196, 0.08);
-    padding: 15px 20px;
-    border-radius: 10px;
+/* ================================================
+   UTILITY CLASSES
+   ================================================ */
+
+/* Text center untuk paragraf subtitle */
+.text-center {
+    text-align: center;
 }
 
-/* List di dalam collapse */
-.collapse ul li {
-    color: #ffffff;
+/* Margin bottom untuk spacing */
+.mb-2 {
+    margin-bottom: 2rem;
 }
 
-/* Paragraf di collapse */
-.collapse p {
-    color: #ffffff;
+/* Opacity untuk disabled buttons */
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
-
-
-.modal-content {
-    border-radius: 15px;        
-}
-
-/* ================================
-   CUSTOM CURSOR STRAWBERRY
-   ================================ */
-html, body {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍓</text></svg>") 16 0, auto;
-}
-
-/* Hide cursor default */
-/*body, body * {
-    cursor: none !important;
-}*/
-
-/*#fake-cursor {
-    width: 32px;
-    height: 32px;
-
-    background-image: url("img/strawberry.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    pointer-events: none;
-    z-index: 9999;
-}*/
-
-

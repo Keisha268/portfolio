@@ -191,6 +191,7 @@ html {
     align-items: center;
     justify-content: center;
     padding: 5rem 1rem 2rem; /* Top padding untuk navbar fixed */
+    margin-bottom: 3rem;
 }
 
 .hero-container {
@@ -475,6 +476,38 @@ footer {
 footer p {
     margin: 0.3rem 0;
     font-size: 0.9rem;
+}
+
+@media (max-width: 599px) {
+    .hero {
+        max-height: 80vh; /* Maksimal 80% viewport, tidak full */
+        overflow: hidden; /* Pastikan tidak overflow */
+    }
+    
+    .hero-container {
+        gap: 1.5rem; /* Kurangi jarak antara elemen */
+    }
+    
+    .hero-image img {
+        max-width: 200px; /* Gambar lebih kecil di mobile */
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem; /* Judul lebih kecil */
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
 }
 
 /* ================================================

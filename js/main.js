@@ -144,6 +144,8 @@ console.log('%c🎨 Portfolio Keisha Nazwa Effendi', 'color: #EC7FA9; font-size:
 console.log('%c✨ Scroll Reveal Animation Aktif!', 'color: #FDCEDF; font-size: 14px;');
 console.log('%cJumlah elemen dengan animasi:', 'color: #666;', revealElements.length);
 
+
+
 /* ================================
      FADE-UP ANIMATION ON SCROLL
    ================================ */

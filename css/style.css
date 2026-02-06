@@ -317,11 +317,11 @@ html {
 /* ===== SECTION ABOUT (MOBILE) ===== */
 .about {
     padding: 3rem 1rem;
-    background: white;
+    background: var(--pink-terang);
 }
 
 body.dark-mode .about {
-    background: #16213e;
+    background: var(--bg-gelap);
 }
 
 .section-container {
@@ -344,7 +344,7 @@ body.dark-mode .about {
 
 /* ===== CARD (MOBILE) ===== */
 .card {
-    background: var(--bg-terang);
+    background: #FFFFFE;
     padding: 1.8rem; 
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -353,7 +353,7 @@ body.dark-mode .about {
 }
 
 body.dark-mode .card {
-    background: var(--bg-gelap);
+    background: #16213e;
 }
 
 body.dark-mode .card p {
@@ -488,65 +488,247 @@ body.dark-mode .btn-secondary {
 }
 
 /* ===== CONTACT SECTION (MOBILE) ===== */
+/* CSS Dasar yang sama */
 .contact {
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
     min-height: 70vh;
-}
-
-.section-container{
-    width: 100%;
-}
-
-body.dark-mode .contact {
-    background: #16213e; 
-}
-
-.contact-info {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.contact-item {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+}
+
+.section-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.dashboard-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+body.dark-mode .dashboard-subtitle {
+    color: #aaa;
+}
+
+/* Grid untuk dashboard */
+.contact-info.social-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    font-size: 1rem;
-    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Tombol sosial media */
+.social-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
     background: var(--bg-terang);
-    border-radius: 10px;
-    transition: transform 0.3s;
-    min-height: 80px;
+    border: 2px solid transparent;
 }
 
-body.dark-mode .contact-item {
+body.dark-mode .social-btn {
     background: var(--bg-gelap);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-.contact-item:hover {
-    transform: translateY(-3px);
+/* Warna spesifik untuk setiap tombol */
+.social-btn.email {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(253, 121, 168, 0.1));
+    border-color: rgba(255, 107, 107, 0.2);
 }
 
-.contact-item span {
-    font-size: 1.5rem;
+.social-btn.whatsapp {
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.1));
+    border-color: rgba(37, 211, 102, 0.2);
 }
 
-.contact-item a {
+.social-btn.github {
+    background: linear-gradient(135deg, rgba(51, 51, 51, 0.1), rgba(110, 84, 148, 0.1));
+    border-color: rgba(51, 51, 51, 0.2);
+}
+
+.social-btn.instagram {
+    background: linear-gradient(135deg, rgba(131, 58, 180, 0.1), rgba(253, 29, 29, 0.1), rgba(252, 175, 69, 0.1));
+    border-color: rgba(131, 58, 180, 0.2);
+}
+
+body.dark-mode .social-btn.email {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(253, 121, 168, 0.15));
+}
+
+body.dark-mode .social-btn.whatsapp {
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(18, 140, 126, 0.15));
+}
+
+body.dark-mode .social-btn.github {
+    background: linear-gradient(135deg, rgba(51, 51, 51, 0.15), rgba(110, 84, 148, 0.15));
+}
+
+body.dark-mode .social-btn.instagram {
+    background: linear-gradient(135deg, rgba(131, 58, 180, 0.15), rgba(253, 29, 29, 0.15), rgba(252, 175, 69, 0.15));
+}
+
+/* Hover effect */
+.social-btn:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .social-btn:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.social-btn.email:hover {
+    border-color: #ff6b6b;
+    box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+}
+
+.social-btn.whatsapp:hover {
+    border-color: #25D366;
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2);
+}
+
+.social-btn.github:hover {
+    border-color: #333;
+    box-shadow: 0 15px 30px rgba(51, 51, 51, 0.2);
+}
+
+.social-btn.instagram:hover {
+    border-color: #833AB4;
+    box-shadow: 0 15px 30px rgba(131, 58, 180, 0.2);
+}
+
+/* Icon styling */
+.social-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.social-btn:hover .social-icon {
+    transform: scale(1.2);
+}
+
+/* Text styling */
+.social-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.social-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+body.dark-mode .social-title {
+    color: #fff;
+}
+
+.social-link {
     color: var(--pink-utama);
     text-decoration: none;
-    font-weight: 600;
-    transition: opacity 0.3s;
+    font-weight: 500;
+    font-size: 0.95rem;
+    word-break: break-word;
+    transition: all 0.3s ease;
 }
 
-body.dark-mode .contact-item a {
+body.dark-mode .social-link {
     color: var(--pink-muda);
 }
 
-.contact-item a:hover {
-    opacity: 0.7;
+.social-link:hover {
+    opacity: 0.8;
     text-decoration: underline;
+}
+
+/* Warna teks spesifik */
+.social-btn.email .social-title {
+    color: #ff6b6b;
+}
+
+.social-btn.whatsapp .social-title {
+    color: #25D366;
+}
+
+.social-btn.github .social-title {
+    color: #333;
+}
+
+.social-btn.instagram .social-title {
+    background: linear-gradient(90deg, #833AB4, #FD1D1D, #FCAF45);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-mode .social-btn.email .social-title {
+    color: #ff8e8e;
+}
+
+body.dark-mode .social-btn.whatsapp .social-title {
+    color: #55efc4;
+}
+
+body.dark-mode .social-btn.github .social-title {
+    color: #a29bfe;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-info.social-dashboard {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .social-btn {
+        padding: 1.5rem 1rem;
+        min-height: 160px;
+    }
+    
+    .social-icon {
+        font-size: 2rem;
+    }
+    
+    .social-title {
+        font-size: 1.1rem;
+    }
+    
+    .social-link {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 2.5rem 1rem;
+    }
+    
+    .social-btn {
+        min-height: 140px;
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .social-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
 }
 
 /* ===== FOOTER (MOBILE) ===== */

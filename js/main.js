@@ -1,19 +1,24 @@
+/* ================================
+   HAMBURGER MENU TOGGLE
+   ================================ */
 function toggleMenu() {
     const menu = document.querySelector('.nav-menu');
     const hamburger = document.querySelector('.hamburger');
-    menu.classList.toggle('active'); // Tambah/hapus class 'active'
+    menu.classList.toggle('active');
     hamburger.classList.toggle('active');
 }
 
- // Tutup menu otomatis saat link diklik
+// Tutup menu otomatis saat link diklik
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
-    document.querySelector('.nav-menu').classList.remove('active');
+        document.querySelector('.nav-menu').classList.remove('active');
         document.querySelector('.hamburger').classList.remove('active');
     });
 });
 
-// Fungsi untuk toggle dark mode
+/* ================================
+   DARK MODE TOGGLE
+   ================================ */
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const themeToggle = document.querySelector('.theme-toggle');
@@ -34,7 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ================================
-     SMOOTH SCROLL NAVBAR
+   SMOOTH SCROLL NAVBAR
    ================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -50,11 +55,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* ================================
-    NAVBAR AUTO ACTIVE (SCROLL)
+   NAVBAR AUTO ACTIVE (SCROLL)
    ================================ */
 window.addEventListener("scroll", function () {
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-menu a"); // PERBAIKAN DI SINI
+    const navLinks = document.querySelectorAll(".nav-menu a");
 
     let current = "";
 
@@ -73,6 +78,71 @@ window.addEventListener("scroll", function () {
     });
 });
 
+/* ================================
+   SCROLL REVEAL ANIMATION
+   ================================ */
+// Intersection Observer untuk deteksi element masuk viewport
+const observerOptions = {
+    root: null, // viewport
+    rootMargin: '0px',
+    threshold: 0.15 // Trigger ketika 15% element terlihat
+};
+
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Tambahkan class 'active' untuk trigger animasi
+            entry.target.classList.add('active');
+            
+            // Optional: Uncomment baris di bawah jika ingin animasi hanya sekali
+            // observer.unobserve(entry.target);
+        } else {
+            // Optional: Uncomment untuk animasi berulang setiap scroll
+            // entry.target.classList.remove('active');
+        }
+    });
+};
+
+// Buat observer instance
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+// Observe semua element dengan class scroll-reveal
+const revealElements = document.querySelectorAll(
+    '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale'
+);
+
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+
+/* ================================
+   FIX MOBILE VIEWPORT HEIGHT
+   ================================ */
+window.addEventListener('load', function() {
+    function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setVH();
+    window.addEventListener('resize', setVH);
+});
+
+/* ================================
+   PREVENT DEFAULT ZOOM
+   ================================ */
+document.addEventListener('touchstart', function(event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+/* ================================
+   CONSOLE INFO (Optional)
+   ================================ */
+console.log('%c🎨 Portfolio Keisha Nazwa Effendi', 'color: #EC7FA9; font-size: 20px; font-weight: bold;');
+console.log('%c✨ Scroll Reveal Animation Aktif!', 'color: #FDCEDF; font-size: 14px;');
+console.log('%cJumlah elemen dengan animasi:', 'color: #666;', revealElements.length);
 
 /* ================================
      FADE-UP ANIMATION ON SCROLL
